@@ -4,8 +4,18 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
-
-
+let hearts = document.querySelectorAll("span.like-glyph")
+hearts.forEach(heart => {heart.addEventListener("click",   () => {
+    if(heart.innerText === EMPTY_HEART){
+      heart.textContent = FULL_HEART
+      heart.style.color = "red"
+      console.log(mimicServerCall().value)
+    }else{
+      heart.textContent = EMPTY_HEART
+      heart.style.color = "rgb(170,184,194)"
+    }
+  })
+})
 
 //------------------------------------------------------------------------------
 // Ignore after this point. Used only for demo purposes
