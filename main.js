@@ -3,8 +3,8 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 const heart = {
-    [EMPTY_HEART]: FULL_HEART,
-    [FULL_HEART]: EMPTY_HEART
+    [EMPTY_HEART]: [FULL_HEART, "activated-heart"],
+    [FULL_HEART]: [EMPTY_HEART, ""]
 }
 
 // Your JavaScript code goes here!
@@ -16,8 +16,12 @@ document.addEventListener('DOMContentLoaded', function() {
         span.addEventListener('click', function(event) {
             mimicServerCall().then(function() {
                 let currentlike = event.target
-                currentlike.className = "activated-heart"
-                currentlike.innerText = heart[currentlike.innerText]
+                let object = heart[currentlike.innerText]
+
+                currentlike.innerText = object[0]
+                currentlike.className = object[1]
+                    // currentlike.className = heart[currentlike.innerText][1]
+                    // currentlike.innerText = heart[currentlike.innerText][0]
             }).catch(function(erros) {
 
                 let p = document.getElementById("modal-message")
